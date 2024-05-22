@@ -30,6 +30,9 @@ python train_student.py --model_s ShuffleV2 --path_t ./save/models/resnet32x4_ci
 ```
 
 Quick start on ImageNet:
+
+Before the experiment, you need to prepare the ImageNet dataset in the folder `./data` following the example shell file given by pytorch: [file](https://github.com/pytorch/examples/blob/main/imagenet/extract_ILSVRC.sh).
+
 ```
 CUDA_VISIBLE_DEVICES=0,1 python train_student_imagenet.py --model_t ResNet34 --model_s ResNet18 --dataset imagenet --batch_size 128 --epochs 100 --learning_rate 0.1 --lr_decay_epochs 30,60,90 --lr_decay_rate 0.1 --weight_decay 1e-4 --momentum 0.9 --distill dhkd -r 1 -a 0.1 --dual_head --linear --BinaryKL_T 2 --trial 1 --multiprocessing-distributed --world-size 1 --rank 0
 ```
